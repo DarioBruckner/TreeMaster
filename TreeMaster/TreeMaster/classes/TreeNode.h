@@ -7,7 +7,7 @@ class TreeNode
     public:
         TreeNode() = default;
         ~TreeNode();
-        void addNode(TreeNode* root, int inputData);
+        void addNode(int inputData);
         void setData(int data);
 
     protected:
