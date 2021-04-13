@@ -5,6 +5,7 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include "classes/TreeNode.h"
 
 
 std::vector<int> arr;
@@ -35,7 +36,10 @@ void printData(){
 
 int main(){
     int input = 0; 
-    std::cout << "Willkommen im TreeMaster, hier können Sie Ihre Daten mittels \"Binärytree-Struktur\" speichern und suchen" << std::endl;
+    TreeNode* root;
+    root = new TreeNode();
+    int input = 0;
+    std::cout << "Willkommen im TreeMaster, hier kï¿½nnen Sie Ihre Daten mittels \"Binï¿½rytree-Struktur\" speichern und suchen" << std::endl;
     while(1){
         std::cout << "Was wollen Sie machen? (0) Beendet das Program (1) load Data from file (2) Print data (3)..." << std::endl;
         std::cin >> input;
@@ -49,6 +53,13 @@ int main(){
         }else if(input == 2){
             printData();
         } else{
+            //test addNode function:
+            root->addNode(5);
+            root->addNode(3);
+            root->addNode(7);
+            root->addNode(8);
+            root->addNode(17);
+            root->addNode(5);
             std::cout << "Noch in Arbeit" << std::endl;
         }
     }

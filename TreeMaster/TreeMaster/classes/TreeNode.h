@@ -13,7 +13,7 @@ class TreeNode
     protected:
 
     private:
-        int data;
+        int data = -1;
         TreeNode* left = nullptr;
         TreeNode* right = nullptr;
 
