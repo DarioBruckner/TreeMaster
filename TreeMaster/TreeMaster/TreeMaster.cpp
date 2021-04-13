@@ -8,10 +8,8 @@
 #include "classes/TreeNode.h"
 
 
-std::vector<int> arr;
 
-
-void loadData(std::string filename){
+void loadData(std::string filename, TreeNode* root){
   
 
     std::ifstream input(filename);
@@ -22,20 +20,16 @@ void loadData(std::string filename){
     std::string nextValue;
 
     while(std::getline(input, data)){
-        arr.push_back(stoi(data));
+        root->addNode(stoi(data));
     }
 
 }
 
 void printData(){
-    for(int value : arr){
-        std::cout << value << " ";
-    }
-    std::cout << std::endl;
+   
 }
 
 int main(){
-    int input = 0; 
     TreeNode* root;
     root = new TreeNode();
     int input = 0;
@@ -49,17 +43,10 @@ int main(){
             std::string filename;
             std::cout << "pls input Filename" << std::endl;
             std::cin >> filename;
-            loadData(filename);
+            loadData(filename, root);
         }else if(input == 2){
             printData();
         } else{
-            //test addNode function:
-            root->addNode(5);
-            root->addNode(3);
-            root->addNode(7);
-            root->addNode(8);
-            root->addNode(17);
-            root->addNode(5);
             std::cout << "Noch in Arbeit" << std::endl;
         }
     }
