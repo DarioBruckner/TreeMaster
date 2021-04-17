@@ -54,24 +54,66 @@ void TreeNode::addNode(int inputData) {
         std::cout<<"repetition => do nothing"<<std::endl;
     }
 
-    /*
-    //if input data < root => right
-    }else if(right == nullptr && inputData > data) {
-        root->right = new TreeNode();
-        root->right->setData(inputData);
-    }else {
-
-    }
-
-
-    //if input data < root => left
-    if (root->left == nullptr && inputData < root->data) {
-        root->left = new TreeNode();
-        root->left->setData(inputData);
-
-
-
-    //if input data > root => right
-    */
 
 }
+
+void TreeNode::printTree() {
+
+    if(this == nullptr)
+        return;
+
+    right->printTree();
+
+    left->printTree();
+
+    std::cout<<"bal("<<data<<") = "<<balance<<std::endl;
+
+}
+
+void TreeNode::calcBalance() {
+
+
+
+
+}
+
+float TreeNode::calcAvg(float* sum,float* n) {
+
+
+    if(this == nullptr) {
+        return 0;
+    }
+
+    right->calcAvg(sum, n);
+
+    left->calcAvg(sum, n);
+
+    *sum += data;
+    *n += 1;
+
+    float avg  = *sum / *n;
+
+    return avg;
+
+}
+
+int TreeNode::calcMax() {
+
+    if(right == nullptr) {
+        return data;
+    }
+
+    right->calcMax();
+}
+
+int TreeNode::calcMin() {
+
+    if(left == nullptr) {
+        return data;
+    }
+
+    left->calcMin();
+}
+
+
+
