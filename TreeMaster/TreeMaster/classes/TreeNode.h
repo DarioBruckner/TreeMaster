@@ -7,15 +7,27 @@ class TreeNode
     public:
         TreeNode() = default;
         ~TreeNode();
-        void addNode(int inputData);
+
         void setData(int data);
+
+        void addNode(int inputData);
+        void printTree();
+        float calcAvg(float* sum, float* n);
+        int calcMax();
+        int calcMin();
+        void calcBalance();
+
+
 
     protected:
 
     private:
-        int data = -1;
         TreeNode* left = nullptr;
         TreeNode* right = nullptr;
+        int data = -1;
+        int balance = 0;
+
+
 
 
 };
