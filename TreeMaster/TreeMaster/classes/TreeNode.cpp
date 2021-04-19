@@ -1,5 +1,6 @@
 #include "TreeNode.h"
 #include <iostream>
+#include <algorithm>
 
 
 TreeNode::~TreeNode()
@@ -57,36 +58,53 @@ void TreeNode::addNode(int inputData) {
 
 }
 
-void TreeNode::printTree() {
+void TreeNode::printTree(TreeNode* root) {
 
-    if(this == nullptr)
+    if(root == nullptr)
         return;
 
-    right->printTree();
+    right->printTree(right);
 
-    left->printTree();
+    left->printTree(left);
 
     std::cout<<"bal("<<data<<") = "<<balance<<std::endl;
 
 }
 
-void TreeNode::calcBalance() {
+void TreeNode::calcBalance(TreeNode* root) {
 
+    if(root == nullptr)
+        return;
 
+    right->calcBalance(right);
+
+    left->calcBalance(left);
+
+    this->balance = getHeight(right) - getHeight(left);
 
 
 }
 
-float TreeNode::calcAvg(float* sum,float* n) {
+int TreeNode::getHeight(TreeNode* root)
+{
+    if (root == NULL)
+        return 0;
+    else
+        return std::max(getHeight(root->left), getHeight(root->right) + 1);
+}
+
+float TreeNode::calcAvg(TreeNode* root, float* sum,float* n) {
 
 
-    if(this == nullptr) {
+    if(root == nullptr) {
         return 0;
     }
 
-    right->calcAvg(sum, n);
 
-    left->calcAvg(sum, n);
+
+    right->calcAvg(right, sum , n);
+
+    left->calcAvg(left, sum, n);
 
     *sum += data;
     *n += 1;
@@ -104,6 +122,7 @@ int TreeNode::calcMax() {
     }
 
     right->calcMax();
+
 }
 
 int TreeNode::calcMin() {
