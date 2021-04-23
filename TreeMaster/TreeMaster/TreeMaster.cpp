@@ -52,7 +52,7 @@ int main(){
             std::cin >> filename;
             loadData(filename, root);
         }else if(input == 2){
-            root->printTree();
+            root->printTree(root);
         }else if(input == 3){
             root->addNode(5);
             root->addNode(3);
@@ -65,9 +65,10 @@ int main(){
             root->addNode(30);
             root->addNode(12);
             //root->printTree();
-            avg = root->calcAvg(&sum, &n);
+            avg = root->calcAvg(root,&sum, &n);
             maxValue = root->calcMax();
             minValue = root->calcMin();
+            root->calcBalance(root);
             std::cout << avg << std::endl;
             std::cout << maxValue << std::endl;
             std::cout << minValue << std::endl;

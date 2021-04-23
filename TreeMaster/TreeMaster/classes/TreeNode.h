@@ -11,11 +11,12 @@ class TreeNode
         void setData(int data);
 
         void addNode(int inputData);
-        void printTree();
-        float calcAvg(float* sum, float* n);
+        void printTree(TreeNode* root);
+        float calcAvg(TreeNode* root, float* sum,float* n);
         int calcMax();
         int calcMin();
-        void calcBalance();
+        void calcBalance(TreeNode* root);
+        int getHeight(TreeNode* root);
 
 
 
