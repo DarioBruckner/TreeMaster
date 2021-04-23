@@ -1,6 +1,7 @@
 #include "TreeNode.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 
 TreeNode::~TreeNode()
@@ -9,6 +10,11 @@ TreeNode::~TreeNode()
     left = nullptr;
     delete right;
     right = nullptr;
+}
+
+
+int TreeNode::getData(){
+    return data;
 }
 
 void TreeNode::setData(int data) {
@@ -133,6 +139,49 @@ int TreeNode::calcMin() {
 
     left->calcMin();
 }
+
+
+std::vector<int> TreeNode::searchValue(TreeNode* root, int searchValue, std::vector<int> values){
+    TreeNode* currentNode = root;
+    int nodeData = currentNode->getData();
+    if(nodeData == -1){
+        return failedSearch();
+    }
+    
+    if(nodeData == searchValue){
+        values.push_back(nodeData);
+        return values;
+    } else if(nodeData > searchValue){
+        if(currentNode->left == nullptr){
+            return failedSearch();
+        } else{
+            currentNode = currentNode->left;
+            values.push_back(nodeData);
+            values = currentNode->searchValue(currentNode, searchValue, values);
+        }
+        
+    } else if(nodeData < searchValue){
+        if(currentNode->right == nullptr){
+            return failedSearch();
+        } else{
+            currentNode = currentNode->right;
+            values.push_back(nodeData);
+            values = currentNode->searchValue(currentNode, searchValue, values);
+        }
+    }
+    return values;
+    
+}
+
+
+std::vector<int> TreeNode::failedSearch(){
+    std::vector<int> failed;
+    failed.push_back(-1);
+    return failed;
+}
+
+
+
 
 
 

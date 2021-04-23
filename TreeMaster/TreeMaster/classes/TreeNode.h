@@ -1,12 +1,14 @@
 #ifndef TREENODE_H
 #define TREENODE_H
-
+#include<vector>
 
 class TreeNode
 {
     public:
         TreeNode() = default;
         ~TreeNode();
+
+        int getData();
 
         void setData(int data);
 
@@ -17,11 +19,8 @@ class TreeNode
         int calcMin();
         void calcBalance(TreeNode* root);
         int getHeight(TreeNode* root);
-
-
-
-    protected:
-
+        std::vector<int> searchValue(TreeNode* root, int searchValue, std::vector<int> values);
+        std::vector<int> failedSearch();
     private:
         TreeNode* left = nullptr;
         TreeNode* right = nullptr;

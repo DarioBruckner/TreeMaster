@@ -53,7 +53,7 @@ int main(){
             loadData(filename, root);
         }else if(input == 2){
             root->printTree(root);
-        }else if(input == 3){
+        } else if(input == 3){
             root->addNode(5);
             root->addNode(3);
             root->addNode(17);
@@ -65,13 +65,29 @@ int main(){
             root->addNode(30);
             root->addNode(12);
             //root->printTree();
-            avg = root->calcAvg(root,&sum, &n);
+            avg = root->calcAvg(root, &sum, &n);
             maxValue = root->calcMax();
             minValue = root->calcMin();
             root->calcBalance(root);
             std::cout << avg << std::endl;
             std::cout << maxValue << std::endl;
             std::cout << minValue << std::endl;
+        } else if(input == 4){
+            int searchValue = 0;
+            std::vector<int> values;
+            std::cout << "What number do you want to search?" << std::endl;
+            std::cin >> searchValue;
+            values = root->searchValue(root, searchValue, values);
+            if(values[0] == -1){
+                std::cout << searchValue << " not found" << std::endl;
+            }else{
+                std::cout << searchValue << " found";
+                for(int val: values){
+                    std::cout << " " << val;
+                }
+                std::cout << std::endl;
+            }
+
         } else{
             std::cout << "Noch in Arbeit" << std::endl;
         }
