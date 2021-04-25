@@ -24,8 +24,6 @@ class TreeNode
         int subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter);
         bool checkIfContains(std::vector<int> subtree, int data);
         TreeNode* findRoot(TreeNode* root, int rootdata);
-        void deleteTree(TreeNode* root);
-
     private:
         TreeNode* left = nullptr;
         TreeNode* right = nullptr;
