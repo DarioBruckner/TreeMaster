@@ -29,51 +29,48 @@ void TreeNode::addNode(int inputData) {
     //if noValue add as root
     if(data == -1){
         this->setData(inputData);
-        std::cout<<"new Node "<<inputData<<std::endl;
+
 
      //if input data < root => left
     }else if(inputData < data) {
-        std::cout<<inputData<<" < "<<data<<std::endl;
-        std::cout<<"go left"<<std::endl;
         if(left == nullptr) {
-        std::cout<<"left is empty"<<std::endl;
-        std::cout<<"new Node "<<inputData<<std::endl;
         left = new TreeNode();
         left->setData(inputData);
         }else {
-            std::cout<<"recursion goes brrrr"<<std::endl;
             left->addNode(inputData);
         }
     //if input data > root => right
     }else if(inputData > data) {
-        std::cout<<inputData<<" > "<<data<<std::endl;
-        std::cout<<"go right"<<std::endl;
         if(right == nullptr) {
-        std::cout<<"right is empty"<<std::endl;
-        std::cout<<"new Node "<<inputData<<std::endl;
         right = new TreeNode();
         right->setData(inputData);
         }else {
-            std::cout<<"recursion goes brrrr"<<std::endl;
             right->addNode(inputData);
         }
     }else {
-        std::cout<<"repetition => do nothing"<<std::endl;
     }
 
 
 }
 
-void TreeNode::printTree(TreeNode* root) {
+void TreeNode::printTree(TreeNode* root, bool* avl) {
 
     if(root == nullptr)
         return;
 
-    right->printTree(right);
+    right->printTree(right, avl);
 
-    left->printTree(left);
+    left->printTree(left, avl);
 
-    std::cout<<"bal("<<data<<") = "<<balance<<std::endl;
+
+    std::cout<<"bal("<<data<<") = "<<balance;
+
+    if(balance < -1 || balance > 1) {
+        std::cout<<" (AVL violation!)";
+        *avl = false;
+    }
+
+    std::cout<<std::endl;
 
 }
 
@@ -147,7 +144,7 @@ std::vector<int> TreeNode::searchValue(TreeNode* root, int searchValue, std::vec
     if(nodeData == -1){
         return failedSearch();
     }
-    
+
     if(nodeData == searchValue){
         values.push_back(nodeData);
         return values;
@@ -159,7 +156,7 @@ std::vector<int> TreeNode::searchValue(TreeNode* root, int searchValue, std::vec
             values.push_back(nodeData);
             values = currentNode->searchValue(currentNode, searchValue, values);
         }
-        
+
     } else if(nodeData < searchValue){
         if(currentNode->right == nullptr){
             return failedSearch();
@@ -170,7 +167,7 @@ std::vector<int> TreeNode::searchValue(TreeNode* root, int searchValue, std::vec
         }
     }
     return values;
-    
+
 }
 
 
