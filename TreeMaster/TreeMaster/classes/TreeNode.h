@@ -22,6 +22,7 @@ class TreeNode
         std::vector<int> searchValue(TreeNode* root, int searchValue, std::vector<int> values);
         std::vector<int> failedSearch();
         int subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter);
+        bool checkIfContains(std::vector<int> subtree, int data);
         TreeNode* findRoot(TreeNode* root, int rootdata);
     private:
         TreeNode* left = nullptr;

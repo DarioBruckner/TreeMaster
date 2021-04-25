@@ -184,8 +184,7 @@ int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counte
     if(root == nullptr){
         return ccounter;
     }
-    if(root->getData() == subtree[0]){
-        subtree.erase(subtree.begin());
+    if(checkIfContains(subtree, root->getData())){
         ccounter++;
     }
 
@@ -197,6 +196,14 @@ int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counte
 
 
     return ccounter;
+}
+
+bool TreeNode::checkIfContains(std::vector<int> subtree, int data){
+    if(std::find(subtree.begin(), subtree.end(), data) != subtree.end()){
+        return true;
+    } else{
+        return false;
+    }
 }
 
 
