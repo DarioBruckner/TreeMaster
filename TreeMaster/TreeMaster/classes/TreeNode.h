@@ -13,7 +13,7 @@ class TreeNode
         void setData(int data);
 
         void addNode(int inputData);
-        void printTree(TreeNode* root);
+        void printTree(TreeNode* root, bool* avl);
         float calcAvg(TreeNode* root, float* sum,float* n);
         int calcMax();
         int calcMin();
