@@ -125,7 +125,7 @@ int main(){
                 std::cout << "Subtree Not Found" << std::endl;
             } else{
                 subtree.erase(subtree.begin());
-                int count = root->subtreeSearch(subtreeRoot, subtree, 0);
+                int count = subtreeRoot->subtreeSearch(subtreeRoot, subtree, 0);
 
                 if(count == subtree.size()){
                     std::cout << "Subtree Found" << std::endl;
