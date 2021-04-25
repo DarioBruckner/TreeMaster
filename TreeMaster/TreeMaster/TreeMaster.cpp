@@ -43,7 +43,7 @@ void loadData(std::string filename, TreeNode* root){
 
 std::vector<int> loadSubTree(std::string filename){
     std::vector<int> ret;
-
+    
     std::ifstream input(filename);
     std::string data;
 
@@ -116,7 +116,7 @@ int main(){
             std::cin >> filename;
             std::vector<int> subtree = loadSubTree(filename);
 
-
+            
 
             TreeNode* subtreeRoot = root->findRoot(root, subtree[0]);
             if(subtree.size() == 1 && subtreeRoot != nullptr){
@@ -133,7 +133,7 @@ int main(){
                     std::cout << "Subtree Not Found" << std::endl;
                 }
             }
-
+            
 
         } else{
             std::cout<<"ungultige Eingabe"<<std::endl;
@@ -141,5 +141,6 @@ int main(){
     }
     root->deleteTree(root);
     root = nullptr;
+
 }
 
