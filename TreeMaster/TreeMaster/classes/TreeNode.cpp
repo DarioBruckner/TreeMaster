@@ -195,7 +195,7 @@ std::vector<int> TreeNode::failedSearch(){
 int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter){
     
     int ccounter = counter;
-    if(root == nullptr){
+    if(root == nullptr || ccounter == subtree.size()){
         return ccounter;
     }
     if(checkIfContains(subtree, root->getData())){
