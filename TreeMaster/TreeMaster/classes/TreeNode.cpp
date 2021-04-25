@@ -5,10 +5,7 @@
 
 TreeNode::~TreeNode()
 {
-    delete left;
-    left = nullptr;
-    delete right;
-    right = nullptr;
+
 }
 
 
@@ -245,12 +242,9 @@ void TreeNode::deleteTree(TreeNode* root) {
         return;
 
     right->deleteTree(right);
-
     left->deleteTree(left);
 
-    std::cout<<"deleting"<<data<<std::endl;
     delete root;
-    root = nullptr;
 
 }
 

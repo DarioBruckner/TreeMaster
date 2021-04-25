@@ -8,6 +8,9 @@ class TreeNode
         TreeNode() = default;
         ~TreeNode();
 
+        TreeNode* left = nullptr;
+        TreeNode* right = nullptr;
+
         int getData();
 
         void setData(int data);
@@ -27,8 +30,7 @@ class TreeNode
         void deleteTree(TreeNode* root);
 
     private:
-        TreeNode* left = nullptr;
-        TreeNode* right = nullptr;
+
         int data = -1;
         int balance = 0;
 
