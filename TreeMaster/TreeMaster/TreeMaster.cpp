@@ -25,6 +25,21 @@ void loadData(std::string filename, TreeNode* root){
 
 }
 
+std::vector<int> loadSubTree(std::string filename){
+    std::vector<int> ret;
+    
+    std::ifstream input(filename);
+    std::string data;
+
+    std::string nextLine;
+    std::string nextValue;
+
+    while(std::getline(input, data)){
+        ret.push_back(stoi(data));
+    }
+    return ret;
+}
+
 
 
 int main(){
@@ -75,7 +90,30 @@ int main(){
                 std::cout << std::endl;
             }
         } else if(input == 4){
-            std::cout<<"Subtree suche"<<std::endl;
+            std::string filename;
+            std::cout<<"Filename des Subtres eingeben:"<<std::endl;
+            std::cin >> filename;
+            std::vector<int> subtree = loadSubTree(filename);
+
+            
+
+            TreeNode* subtreeRoot = root->findRoot(root, subtree[0]);
+            if(subtree.size() == 1 && subtreeRoot != nullptr){
+                std::cout << "Subtree Found" << std::endl;
+            }else if(subtreeRoot == nullptr){
+                std::cout << "Subtree Not Found" << std::endl;
+            } else{
+                subtree.erase(subtree.begin());
+                int count = root->subtreeSearch(subtreeRoot, subtree, 0);
+
+                if(count == subtree.size()){
+                    std::cout << "Subtree Found" << std::endl;
+                } else{
+                    std::cout << "Subtree Not Found" << std::endl;
+                }
+            }
+            
+
         } else{
             std::cout<<"ungultige Eingabe"<<std::endl;
         }

@@ -178,7 +178,58 @@ std::vector<int> TreeNode::failedSearch(){
 }
 
 
+int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter){
+    
+    int ccounter = counter;
+    if(root == nullptr){
+        return ccounter;
+    }
+    if(root->getData() == subtree[0]){
+        subtree.erase(subtree.begin());
+        ccounter++;
+    }
 
+
+    ccounter = left->subtreeSearch(left, subtree , ccounter);
+
+    ccounter = right->subtreeSearch(right, subtree, ccounter);  
+
+
+
+    return ccounter;
+}
+
+
+TreeNode* TreeNode::findRoot(TreeNode* root, int rootdata){
+    TreeNode* currentNode = root;
+    TreeNode* retNode = nullptr;
+    int nodeData = currentNode->getData();
+
+    if(currentNode == nullptr || currentNode->getData() == -1){
+        return nullptr;
+    }
+
+
+    if(nodeData == rootdata){
+        return currentNode;
+    } else if(nodeData > rootdata){
+        if(currentNode->left == nullptr){
+            return nullptr;
+        } else{
+            currentNode = currentNode->left;
+            retNode = findRoot(currentNode, rootdata);
+        }
+    } else if(nodeData < rootdata){
+        if(currentNode->right == nullptr){
+            return nullptr;
+        } else{
+            currentNode = currentNode->right;
+            retNode = findRoot(currentNode, rootdata);
+        }
+    }
+
+    return retNode;
+}
 
 
 

@@ -21,6 +21,8 @@ class TreeNode
         int getHeight(TreeNode* root);
         std::vector<int> searchValue(TreeNode* root, int searchValue, std::vector<int> values);
         std::vector<int> failedSearch();
+        int subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter);
+        TreeNode* findRoot(TreeNode* root, int rootdata);
     private:
         TreeNode* left = nullptr;
         TreeNode* right = nullptr;
