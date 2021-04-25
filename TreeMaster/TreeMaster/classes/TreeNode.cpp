@@ -20,6 +20,14 @@ void TreeNode::setData(int data) {
 
 }
 
+/*
+* function that adds a new node to a tree and sets its data value
+*
+* @param input      the integer value that will be stored as data of the new node
+*
+*/
+
+
 void TreeNode::addNode(int inputData) {
 
 
@@ -50,6 +58,14 @@ void TreeNode::addNode(int inputData) {
 
 }
 
+/*
+* function traverses through a Tree and prints the data from all Nodes
+*
+* @param root      pointer to the root TreeNode
+* @param avl       bool that will be false if any node has a balance higher then 1 or lower then -1
+*
+*/
+
 void TreeNode::printTree(TreeNode* root, bool* avl) {
 
     if(root == nullptr)
@@ -71,6 +87,14 @@ void TreeNode::printTree(TreeNode* root, bool* avl) {
 
 }
 
+/*
+* function that calculates the balance factor for each TreeNode
+*
+* @param root      pointer to the root TreeNode
+*
+*/
+
+
 void TreeNode::calcBalance(TreeNode* root) {
 
     if(root == nullptr)
@@ -85,6 +109,15 @@ void TreeNode::calcBalance(TreeNode* root) {
 
 }
 
+/*
+* function that calculates height of a given tree
+*
+* @param root     pointer to the root TreeNode
+*
+* @return         returns the height as an integer value
+*
+*/
+
 int TreeNode::getHeight(TreeNode* root)
 {
     if (root == NULL)
@@ -92,6 +125,16 @@ int TreeNode::getHeight(TreeNode* root)
     else
         return std::max(getHeight(root->left), getHeight(root->right) + 1);
 }
+
+/*
+* function traverses through a Tree and calculates the average of the data values of all TreeNodes
+*
+* @param root      pointer to the root TreeNode
+* @param sum       pointer to the sum of all Nodes
+* @param n         pointer to a counter for the number of Nodes
+*
+* @return          returns the average of all data Values as a float value
+*/
 
 float TreeNode::calcAvg(TreeNode* root, float* sum,float* n) {
 
@@ -115,6 +158,15 @@ float TreeNode::calcAvg(TreeNode* root, float* sum,float* n) {
 
 }
 
+/*
+* function that calculates maximum data value of a given tree
+*
+* @param root     pointer to the root TreeNode
+*
+* @return         returns the maximum data value as an integer
+*
+*/
+
 int TreeNode::calcMax() {
 
     if(right == nullptr) {
@@ -124,6 +176,16 @@ int TreeNode::calcMax() {
     right->calcMax();
 
 }
+
+/*
+* function that calculates minmum data value of a given tree
+*
+* @param root     pointer to the root TreeNode
+*
+* @return         returns the minmum data value as an integer
+*
+*/
+
 
 int TreeNode::calcMin() {
 
@@ -183,17 +245,17 @@ std::vector<int> TreeNode::failedSearch(){
 
 /*
 * Searches the AVL-Tree recursively for a sub tree, returns the amount of elements that have been found
-* 
+*
 * @param root       the pointer to the root of the subtree
 * @param subtree    the subtree in form of a int vector
 * @param counter    the number of elements that have been found
-* 
+*
 * @return ccounter  the current count of elements found
 */
 
 
 int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter){
-    
+
     int ccounter = counter;
     if(root == nullptr || ccounter == subtree.size()){
         return ccounter;
@@ -205,7 +267,7 @@ int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counte
 
     ccounter = left->subtreeSearch(left, subtree , ccounter);
 
-    ccounter = right->subtreeSearch(right, subtree, ccounter);  
+    ccounter = right->subtreeSearch(right, subtree, ccounter);
 
 
 
@@ -215,10 +277,10 @@ int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counte
 
 /*
 * function that checks if the data is inside of the vector of the subtree
-* 
+*
 * @param subtree    a int vector containing the values
 * @param data       the data that that is beeing checked
-* 
+*
 * @return           true/false depending if the elements exists
 */
 
@@ -232,11 +294,11 @@ bool TreeNode::checkIfContains(std::vector<int> subtree, int data){
 
 /*
 * gets a data value and is supposed to find the Treenode Element that cointains said value
-* 
-* 
-* @param root       the root of the tree 
+*
+*
+* @param root       the root of the tree
 * @param rootdata   the data that is beeing searched
-* 
+*
 * @return retnode   the pointer to the node that contains the value (nullptr if it doenst exsist)
 */
 
@@ -272,6 +334,12 @@ TreeNode* TreeNode::findRoot(TreeNode* root, int rootdata){
     return retNode;
 }
 
+/*
+* function traverses through a Tree and deletes all Nodes
+*
+* @param root      pointer to the root TreeNode
+*
+*/
 
 void TreeNode::deleteTree(TreeNode* root) {
 
