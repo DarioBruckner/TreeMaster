@@ -6,10 +6,7 @@
 
 TreeNode::~TreeNode()
 {
-    delete left;
-    left = nullptr;
-    delete right;
-    right = nullptr;
+
 }
 
 
@@ -273,6 +270,19 @@ TreeNode* TreeNode::findRoot(TreeNode* root, int rootdata){
     }
 
     return retNode;
+}
+
+
+void TreeNode::deleteTree(TreeNode* root) {
+
+    if(root == nullptr)
+        return;
+
+    right->deleteTree(right);
+    left->deleteTree(left);
+
+    delete root;
+
 }
 
 
