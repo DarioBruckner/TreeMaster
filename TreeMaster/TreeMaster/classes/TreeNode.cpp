@@ -171,11 +171,28 @@ std::vector<int> TreeNode::searchValue(TreeNode* root, int searchValue, std::vec
 }
 
 
+
+/*
+* Returns a vector with a -1 as its first value
+*
+* @return failed a int vector with -1 as its first element
+*/
+
 std::vector<int> TreeNode::failedSearch(){
     std::vector<int> failed;
     failed.push_back(-1);
     return failed;
 }
+
+/*
+* Searches the AVL-Tree recursively for a sub tree, returns the amount of elements that have been found
+* 
+* @param root       the pointer to the root of the subtree
+* @param subtree    the subtree in form of a int vector
+* @param counter    the number of elements that have been found
+* 
+* @return ccounter  the current count of elements found
+*/
 
 
 int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter){
@@ -198,6 +215,16 @@ int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counte
     return ccounter;
 }
 
+
+/*
+* function that checks if the data is inside of the vector of the subtree
+* 
+* @param subtree    a int vector containing the values
+* @param data       the data that that is beeing checked
+* 
+* @return           true/false depending if the elements exists
+*/
+
 bool TreeNode::checkIfContains(std::vector<int> subtree, int data){
     if(std::find(subtree.begin(), subtree.end(), data) != subtree.end()){
         return true;
@@ -205,6 +232,16 @@ bool TreeNode::checkIfContains(std::vector<int> subtree, int data){
         return false;
     }
 }
+
+/*
+* gets a data value and is supposed to find the Treenode Element that cointains said value
+* 
+* 
+* @param root       the root of the tree 
+* @param rootdata   the data that is beeing searched
+* 
+* @return retnode   the pointer to the node that contains the value (nullptr if it doenst exsist)
+*/
 
 
 TreeNode* TreeNode::findRoot(TreeNode* root, int rootdata){
