@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <vector>
 
+
 TreeNode::~TreeNode()
 {
     delete left;
@@ -52,7 +53,6 @@ void TreeNode::addNode(int inputData) {
 
 }
 
-// traverses through a tree and prints
 void TreeNode::printTree(TreeNode* root, bool* avl) {
 
     if(root == nullptr)
@@ -196,7 +196,7 @@ std::vector<int> TreeNode::failedSearch(){
 
 
 int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counter){
-
+    
     int ccounter = counter;
     if(root == nullptr){
         return ccounter;
@@ -208,7 +208,7 @@ int TreeNode::subtreeSearch(TreeNode* root, std::vector<int> subtree, int counte
 
     ccounter = left->subtreeSearch(left, subtree , ccounter);
 
-    ccounter = right->subtreeSearch(right, subtree, ccounter);
+    ccounter = right->subtreeSearch(right, subtree, ccounter);  
 
 
 
@@ -273,22 +273,6 @@ TreeNode* TreeNode::findRoot(TreeNode* root, int rootdata){
     }
 
     return retNode;
-}
-
-
-void TreeNode::deleteTree(TreeNode* root) {
-
-    if(root == nullptr)
-        return;
-
-    right->deleteTree(right);
-
-    left->deleteTree(left);
-
-    std::cout<<"deleting"<<data<<std::endl;
-    delete root;
-    root = nullptr;
-
 }
 
 
