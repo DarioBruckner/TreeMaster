@@ -8,6 +8,13 @@
 #include "classes/TreeNode.h"
 
 
+/*
+* takes data from a file and addes them to the AVL-Tree
+* 
+* @param filename the name of the file that will be read
+* @param root     a pointer to the "root" class, so the values can be added accordingly
+* 
+*/
 
 void loadData(std::string filename, TreeNode* root){
 
@@ -25,6 +32,15 @@ void loadData(std::string filename, TreeNode* root){
 
 }
 
+
+/*
+* takes the input from the user and loads the subtree into a vector that is than returned
+* 
+* @param the name of the file
+* @return a vector with all the values
+* 
+*/
+
 std::vector<int> loadSubTree(std::string filename){
     std::vector<int> ret;
     
@@ -40,7 +56,11 @@ std::vector<int> loadSubTree(std::string filename){
     return ret;
 }
 
-
+/*
+* In the main method the user input is handelt with an infite while-loop that break upon a certain user input (0)
+* 
+* 
+*/
 
 int main(){
     float sum = 0;
